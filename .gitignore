@@ -1,0 +1,14 @@
+# Data (symlinked from mortgage_data_manager)
+data/
+
+# Survival analysis (not yet ready for release)
+scripts/investigation_gnma_msr_adverse_selection_2025-02-08.py
+reports/investigation_gnma_msr_adverse_selection_2025-02-08.md
+reports/figures/gnma_adverse_selection/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
