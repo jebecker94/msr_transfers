@@ -16,11 +16,12 @@ msr_transfers/
 │   ├── investigation_mlld_servicer_changes_2026-02-11.py     # FNMA full history (81 months)
 │   ├── investigation_fhlmc_servicer_changes_2026-02-11.py    # FHLMC full history (81 months)
 │   └── investigation_gnma_servicer_changes_2026-02-11.py     # GNMA full history (129 months)
-├── reports/                  # Output reports and CSVs
-│   ├── investigation_servicer_changes_combined_2026-02-11.md  # Combined writeup
+├── output/                   # Aggregated transfer CSVs
 │   ├── investigation_mlld_servicer_changes_2026-02-11.csv     # 3,256 rows
 │   ├── investigation_fhlmc_servicer_changes_2026-02-11.csv    # 3,806 rows
 │   └── investigation_gnma_servicer_changes_2026-02-11.csv     # 6,430 rows
+├── reports/                  # Writeups and documentation
+│   └── investigation_servicer_changes_combined_2026-02-11.md  # Combined writeup
 └── data/                     # Agency loan-level data (parquet)
 ```
 
@@ -28,7 +29,7 @@ msr_transfers/
 
 All three datasets are publicly available from the respective agencies:
 
-- **FNMA (Fannie Mae)** — Multi-Lender Loan-Level Disclosure (MLLD) files, available monthly since the June 2019 launch of the Uniform MBS (UMBS) program. Each file contains ~15M loans with 116 fields. We use only `Loan Identifier`, `Servicer Name`, and `Current Investor Loan UPB`.
+- **FNMA (Fannie Mae)** — Monthly Loan-Level Disclosure (MLLD) files, available monthly since the June 2019 launch of the Uniform MBS (UMBS) program. Each file contains ~15M loans with 116 fields. We use only `Loan Identifier`, `Servicer Name`, and `Current Investor Loan UPB`.
 - **FHLMC (Freddie Mac)** — Fixed-Rate and Adjustable-Rate loan-level disclosure files (the "FU" dataset), also available monthly from June 2019 onward under the UMBS framework. ~10M loans per month. Same three fields used.
 - **GNMA (Ginnie Mae)** — Loan-level monthly disclosures (`llmon1` and `llmon2`, record type L), available from April 2015 onward. ~12M loans per month. Unlike FNMA/FHLMC, GNMA data includes an explicit `Seller Issuer ID` field that is populated only when an MSR transfer occurs, so no month-over-month differencing is needed. Issuer names are resolved from GNMA's `issrcutoff` and `nissues` lookup tables.
 
