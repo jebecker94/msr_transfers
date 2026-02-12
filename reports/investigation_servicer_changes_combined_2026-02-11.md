@@ -146,7 +146,7 @@ The four fraction columns let you distinguish transfer types at a glance:
 import polars as pl
 
 # Load one file
-df = pl.read_csv("investigations/reports/investigation_mlld_servicer_changes_2026-02-11.csv")
+df = pl.read_csv("output/investigation_mlld_servicer_changes_2026-02-11.csv")
 
 # Filter out likely rebrands
 real = df.filter(~((pl.col("frac_seller_n") > 0.90) & (pl.col("frac_buyer_n") > 0.70)))

@@ -25,7 +25,7 @@ LLMON1_L_DIR = Path("data/gnma/silver/llmon1/L/")
 LLMON2_L_DIR = Path("data/gnma/silver/llmon2/L/")
 ISSRCUTOFF_DIR = Path("data/gnma/bronze/issrcutoff/")
 NISSUES_DIR = Path("data/gnma/silver/nissues/D/")
-OUTPUT_CSV = Path("investigations/msr_transfers/reports/investigation_gnma_servicer_changes_2026-02-11.csv")
+OUTPUT_CSV = Path("output/investigation_gnma_servicer_changes_2026-02-11.csv")
 
 # ---------------------------------------------------------------------------
 # Column names
