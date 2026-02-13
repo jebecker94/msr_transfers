@@ -1,7 +1,7 @@
 """
 Full-history GNMA servicer change detection.
 
-Unlike FNMA MLLD (which requires month-over-month differencing), GNMA loan-level
+Unlike FNMA (which requires month-over-month differencing), GNMA loan-level
 data has an explicit Seller Issuer ID field — populated ONLY when an MSR transfer
 occurs. This script processes all available months (Apr 2015+), builds an issuer
 ID → name lookup, and produces a CSV matching the FNMA output format.

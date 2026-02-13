@@ -1,9 +1,9 @@
 """
-Full-history FNMA MLLD servicer change detection.
+Full-history FNMA servicer change detection.
 
-Extends investigation_mlld_msr_transfers_2025-02-06 to all 81 monthly files
-(201906–202602) using a sliding-window approach: load 2 months at a time,
-compare, release. Peak memory ~1.2 GB vs ~27 GB for loading all files.
+Processes all 81 monthly MLLD files (201906–202602) using a sliding-window
+approach: load 2 months at a time, compare, release. Peak memory ~1.2 GB
+vs ~27 GB for loading all files.
 
 Output: CSV with one row per (servicer_from, servicer_to, transition_month)
 aggregation, including loan count and total UPB from the "to" month.
@@ -16,7 +16,7 @@ from pathlib import Path
 import polars as pl
 
 DATA_DIR = Path("data/umbs/bronze/FNMA/FNM_MLLD")
-OUTPUT_CSV = Path("output/investigation_mlld_servicer_changes_2026-02-11.csv")
+OUTPUT_CSV = Path("output/investigation_fnma_servicer_changes_2026-02-11.csv")
 
 COLS = ["Loan Identifier", "Servicer Name", "Current Investor Loan UPB"]
 

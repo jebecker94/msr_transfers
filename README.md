@@ -13,11 +13,11 @@ Loan-level mortgage servicing rights (MSR) transfer detection across three agenc
 msr_transfers/
 ├── README.md
 ├── scripts/                  # Analysis scripts (run from project root)
-│   ├── investigation_mlld_servicer_changes_2026-02-11.py     # FNMA full history (81 months)
+│   ├── investigation_fnma_servicer_changes_2026-02-11.py     # FNMA full history (81 months)
 │   ├── investigation_fhlmc_servicer_changes_2026-02-11.py    # FHLMC full history (81 months)
 │   └── investigation_gnma_servicer_changes_2026-02-11.py     # GNMA full history (129 months)
 ├── output/                   # Aggregated transfer CSVs
-│   ├── investigation_mlld_servicer_changes_2026-02-11.csv     # 3,256 rows
+│   ├── investigation_fnma_servicer_changes_2026-02-11.csv     # 3,256 rows
 │   ├── investigation_fhlmc_servicer_changes_2026-02-11.csv    # 3,806 rows
 │   └── investigation_gnma_servicer_changes_2026-02-11.csv     # 6,430 rows
 ├── reports/                  # Writeups and documentation
@@ -83,7 +83,7 @@ For **GNMA**, the data only shows the post-transfer state (the buyer is the curr
 All scripts are designed to run from the **project root** (the directory containing `data/`):
 
 ```bash
-python scripts/investigation_mlld_servicer_changes_2026-02-11.py
+python scripts/investigation_fnma_servicer_changes_2026-02-11.py
 python scripts/investigation_fhlmc_servicer_changes_2026-02-11.py
 python scripts/investigation_gnma_servicer_changes_2026-02-11.py
 ```

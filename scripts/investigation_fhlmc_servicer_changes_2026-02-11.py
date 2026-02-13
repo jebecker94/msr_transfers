@@ -1,7 +1,7 @@
 """
 Full-history FHLMC (Freddie Mac) FU servicer change detection.
 
-Same sliding-window approach as the FNMA MLLD script: load 2 months at a time,
+Same sliding-window approach as the FNMA script: load 2 months at a time,
 inner-join on Loan Identifier, detect servicer name changes, aggregate.
 
 Data: data/umbs/bronze/FHLMC/FU/ — 81 monthly files (201906–202602).

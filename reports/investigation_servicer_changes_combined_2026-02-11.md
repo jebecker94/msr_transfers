@@ -2,9 +2,9 @@
 title: Cross-Agency Servicer Change Analysis (FNMA, FHLMC, GNMA)
 date: 2026-02-11
 status: complete
-datasets: [FNMA MLLD bronze (201906–202602), FHLMC FU bronze (201906–202602), GNMA llmon1/llmon2 silver L (201504–202512)]
-scripts: [investigation_mlld_servicer_changes_2026-02-11.py, investigation_fhlmc_servicer_changes_2026-02-11.py, investigation_gnma_servicer_changes_2026-02-11.py]
-outputs: [investigation_mlld_servicer_changes_2026-02-11.csv, investigation_fhlmc_servicer_changes_2026-02-11.csv, investigation_gnma_servicer_changes_2026-02-11.csv]
+datasets: [FNMA bronze (201906–202602), FHLMC FU bronze (201906–202602), GNMA llmon1/llmon2 silver L (201504–202512)]
+scripts: [investigation_fnma_servicer_changes_2026-02-11.py, investigation_fhlmc_servicer_changes_2026-02-11.py, investigation_gnma_servicer_changes_2026-02-11.py]
+outputs: [investigation_fnma_servicer_changes_2026-02-11.csv, investigation_fhlmc_servicer_changes_2026-02-11.csv, investigation_gnma_servicer_changes_2026-02-11.csv]
 ---
 
 # Cross-Agency Servicer Change Analysis
@@ -15,7 +15,7 @@ This analysis tracks every loan-level servicer change across the three major age
 
 ## Summary Statistics
 
-| | FNMA (MLLD) | FHLMC (FU) | GNMA (llmon1+2) |
+| | FNMA | FHLMC | GNMA |
 |---|---:|---:|---:|
 | **Period** | Jun 2019 – Feb 2026 | Jun 2019 – Feb 2026 | Apr 2015 – Dec 2025 |
 | **Monthly files** | 81 | 81 | 129 |
@@ -146,7 +146,7 @@ The four fraction columns let you distinguish transfer types at a glance:
 import polars as pl
 
 # Load one file
-df = pl.read_csv("output/investigation_mlld_servicer_changes_2026-02-11.csv")
+df = pl.read_csv("output/investigation_fnma_servicer_changes_2026-02-11.csv")
 
 # Filter out likely rebrands
 real = df.filter(~((pl.col("frac_seller_n") > 0.90) & (pl.col("frac_buyer_n") > 0.70)))
