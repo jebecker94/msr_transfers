@@ -80,7 +80,7 @@ Roughly, the `frac_seller` and `frac_buyer` columns can be used to identify the 
 | low | low | **Partial portfolio sale** — both parties retain large books (e.g., Wells Fargo → Nationstar) |
 | low | high | **Flow sale to small buyer** — recurring small transfers to a dedicated acquirer |
 
-For many of the "re-brands", the servicer_from and servicer_to columns are near identical. These are not so much "re-brands" as they are reporting anomalies. We are working on a name-based matching algorithm to identify these transfers and de-clutter the results.
+For many of the "re-brands", the `servicer_from` and `servicer_to` columns are near identical. These are not so much "re-brands" as they are reporting anomalies. We are working on a name-based matching algorithm to identify these transfers and de-clutter the results.
 
 ## Running scripts
 
