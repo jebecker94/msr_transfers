@@ -36,6 +36,8 @@ A large share of detected "transfers" in the conventional agencies (FNMA, FHLMC)
 | **FHLMC** | 4.1M loans ($1.1T) | 6.7M loans ($1.9T) |
 | **GNMA** | 0.5M loans ($72B) | 8.7M loans ($1.4T) |
 
+Rebrands will be flagged or removed in a future update using a more reliable name-based matching method. For now, they are included in the MSR transfer files and are partially identifiable by count/volume shares of the seller and buyer.
+
 GNMA has far fewer rebrands because it uses issuer IDs rather than names — a name change doesn't produce a false positive unless the issuer ID itself changes (which is rare).
 
 ## Detection Method
@@ -46,15 +48,15 @@ GNMA has far fewer rebrands because it uses issuer IDs rather than names — a n
 
 ## Key Findings
 
-### 1. The Nationstar-to-Rocket Rebrand (Feb 2026)
+### 1. The Nationstar/Mr. Cooper Acquisition by Rocket Mortgage (Feb 2026)
 
-The single largest event across all three datasets. Nationstar Mortgage LLC rebranded to Rocket Mortgage, LLC:
+The single largest event across all three datasets. Rocket Mortgage, LLC acquired Nationstar Mortgage LLC (doing business as Mr. Cooper):
 
 - FNMA: 1.33M loans, $284B
 - FHLMC: 896k loans, $218B
 - Combined conventional: **2.2M loans, $502B** in a single month
 
-This was purely a name change (99% of seller's book, 55% of buyer's book — the remainder being loans already under the Rocket name from Quicken Loans rebrands).
+The acquisition took place in October 2025, but the data shows the change in February 2026 (after the acquisition was completed). 
 
 ### 2. Quicken Loans Rebrands (2020–2021)
 
@@ -86,6 +88,8 @@ Some servicers changed names multiple times, creating noise in the conventional 
 - **New Residential**: Multiple name variants (NewRez LLC, New Residential Mortgage LLC/,LLC) shuffled across FHLMC in 2022–2023
 - **Flagstar**: FSB → National Association (Jan 2023) → N.A. (Apr 2023) on FNMA
 - **PennyMac**: "Corp" → "Corp." (a single period) moved 173k loans on FHLMC
+
+Many of these naming changes will be addressed using a name-based matching method in a future update.
 
 ### 5. Wells Fargo's Multi-Year Exit
 
@@ -134,11 +138,16 @@ The four fraction columns let you distinguish transfer types at a glance:
 | low | low | **Partial portfolio sale** — seller retains most of book, buyer has diverse sources (e.g., Wells Fargo → Nationstar) |
 | low | high | **Flow sale to small buyer** — small recurring transfers to a dedicated acquirer |
 
+Note that these are conventions, not hard rules. We are working on a name-based method to better handle naming convention changes which often occur in the conventional datasets and clutter the final list of potential MSR transfers. Preliminary investigation suggests that the name-based method can eliminate ~$1.5T of transfers from the list.
+
+After this is done, we intend to identify known rebrands (e.g., Quicken → Rocket) and flag them as verified rebrands rather than MSR transfers.
+
 ### GNMA-Specific Notes
 
 - Servicer names come from an issuer ID lookup table, not directly from the data. Some names may have extra spaces or abbreviation differences (e.g., "WELLS FARGO BANK  NA." with double space).
 - The `frac_seller` columns approximate the seller's pre-transfer book as (loans still serviced) + (loans transferred), since the GNMA file only shows the post-transfer state.
 - GNMA covers Apr 2015–Dec 2025 (longer history than the conventional agencies).
+- GNMA balances are often zero due to data reporting conventions. Thus the aggregate transfer volume is not a true sum. but a sum only of the non-zero balances.
 
 ### Example Queries
 
