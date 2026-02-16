@@ -70,6 +70,8 @@ For **GNMA**, the data only shows the post-transfer state (the buyer is the curr
 
 ### Interpreting the fractions
 
+Roughly, the `frac_seller` and `frac_buyer` columns can be used to identify the likely interpretation of the "transfer." The following table shows the most common interpretations:
+
 | frac_seller | frac_buyer | Likely interpretation |
 |:-----------:|:----------:|----------------------|
 | ~100% | ~100% | **Rebrand** — same entity, new name (e.g., Quicken → Rocket) |
@@ -77,6 +79,8 @@ For **GNMA**, the data only shows the post-transfer state (the buyer is the curr
 | ~100% | high | **Full exit to new/small buyer** — seller's book *is* the buyer's book (e.g., Matrix → TH MSR Holdings) |
 | low | low | **Partial portfolio sale** — both parties retain large books (e.g., Wells Fargo → Nationstar) |
 | low | high | **Flow sale to small buyer** — recurring small transfers to a dedicated acquirer |
+
+For many of the "re-brands", the servicer_from and servicer_to columns are near identical. These are not so much "re-brands" as they are reporting anomalies. We are working on a name-based matching algorithm to identify these transfers and de-clutter the results.
 
 ## Running scripts
 
